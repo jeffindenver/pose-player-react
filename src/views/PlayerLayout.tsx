@@ -1,6 +1,6 @@
-import { Model, IJsonModel, Layout, TabNode } from 'flexlayout-react';
+import { IJsonModel, Layout, Model } from 'flexlayout-react';
+import { layoutFactory } from './layoutFactory';
 import "./PlayerLayout.css";
-import { BasicBox } from '../components/BasicBox';
 
 const json: IJsonModel = {
     global: {
@@ -40,13 +40,13 @@ const json: IJsonModel = {
         children: [
             {
                 type: "tabset",
-                weight: 50,
+                weight: 25,
                 enableClose: true,
                 children: [
                     {
                         type: "tab",
                         name: "One",
-                        component: "basic-box",
+                        component: "control-column",
                         enableClose: true,
                         borderWidth: 5,
                     }
@@ -59,7 +59,7 @@ const json: IJsonModel = {
                     {
                         type: "tab",
                         name: "Two",
-                        component: "basic-box",
+                        component: "pose-image",
                     }
                 ]
             }
@@ -70,15 +70,9 @@ const json: IJsonModel = {
 const model = Model.fromJson(json);
 
 function PlayerLayout() {
-    const factory = (node: TabNode) => {
-        const component = node.getComponent();
-        if (component === "basic-box") {
-            return <BasicBox></BasicBox>;
-        }
-    }
 
     return (
-        <Layout model={model} factory={factory} />
+        <Layout model={model} factory={layoutFactory} />
     );
 }
 
