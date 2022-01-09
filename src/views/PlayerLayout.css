@@ -1,0 +1,8 @@
+.flexlayout__layout {
+  /* text-align: center; */
+  min-height: 100vh;
+}
+
+.layout-border {
+  background-color: #282c34;
+}
